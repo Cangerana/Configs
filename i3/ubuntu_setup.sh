@@ -50,13 +50,15 @@ silent_exec $APT_INSTALL -y gnome-software-plugin-flatpak
 silent_exec $APT_INSTALL -y flameshot
 silent_exec $APT_INSTALL -y numlockx
 silent_exec $APT_INSTALL -y terminator
-silent_exec $APT_INSTALL -y chromium-browser
+silent_exec $APT_INSTALL -y ranger
+silent_exec $APT_INSTALL -y pavucontrol-qt
+#silent_exec $APT_INSTALL -y chromium-browser
 silent_exec $APT_INSTALL -y gparted
 silent_exec $APT_INSTALL -y postgresql postgresql-contrib
 
-silent_exec $APT_INSTALL -y apt-transport-https make gcc libswscale-dev libavformat-dev libavutil-dev libavcodec-dev libavresample-dev -y
+silent_exec $APT_INSTALL -y apt-transport-https make gcc libswscale-dev libavformat-dev libavutil-dev libavcodec-dev -y
 
-silent_exec $APT_INSTALL -y i3lock dmenu feh arandr
+silent_exec $APT_INSTALL -y i3lock dmenu feh arandr nitrogen picom polybar
 silent_exec $APT_INSTALL -y i3
 
 
@@ -70,9 +72,9 @@ echo "Starting Setup ==> Flatpak Apps"
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 silent_exec $FLATPAK_INSTALL com.discordapp.Discord -y
-silent_exec $FLATPAK_INSTALL com.spotify.Client -y
-silent_exec $FLATPAK_INSTALL org.gnome.gitlab.somas.Apostrophe -y
-silent_exec $FLATPAK_INSTALL com.jetbrains.RubyMine -y
+#silent_exec $FLATPAK_INSTALL com.spotify.Client -y
+#silent_exec $FLATPAK_INSTALL org.gnome.gitlab.somas.Apostrophe -y
+#silent_exec $FLATPAK_INSTALL com.jetbrains.RubyMine -y
 
 echo "Finished ==> Flatpak Apps"
 
@@ -83,38 +85,38 @@ sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 rm -f packages.microsoft.gpg
 # update
-silent_exec $APT_INSTALL -y code
+#silent_exec $APT_INSTALL -y code
 
-echo "Setting rbenv"
+#echo "Setting rbenv"
 
-silent_exec $APT_INSTALL -y rbenv
-rbenv init
+#silent_exec $APT_INSTALL -y rbenv
+#rbenv init
 
-echo "Setting dbeaver"
+#echo "Setting dbeaver"
 
-$APT_INSTALL -y openjdk-11-jdk openjdk-11-jre
-wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add - echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
-sudo apt update -y && sudo apt upgrade -y && sudo apt clean -y && sudo apt autoclean -y && sudo apt autoremove -y
-silent_exec $APT_INSTALL dbeaver-ce
+#$APT_INSTALL -y openjdk-11-jdk openjdk-11-jre
+#wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add - echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
+#sudo apt update -y && sudo apt upgrade -y && sudo apt clean -y && sudo apt autoclean -y && sudo apt autoremove -y
+#silent_exec $APT_INSTALL dbeaver-ce
 
 echo "Setting I3 configs"
 
-mkdir ../.config/i3/
-cat ./i3_config > ../.config/i3/config
+mkdir ~/.config/i3/
+cat ./i3_config > ~/.config/i3/config
 
 echo "Setting Images"
 
-cp -r ./images ../Pictures
+cp -r ./images ~/Pictures
 
 echo "Setting Fonts"
 
-mkdir ../.fonts
+mkdir ~/.fonts
 
-wget https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip -P ../.fonts/
-wget https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v5.2.zip -P ../.fonts/
+wget https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip -P ./.fonts/
+wget https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v5.2.zip -P ./.fonts/
 
-unzip '../.fonts/*.zip' -d ../.fonts/
-rm -rf ../.fonts/*.zip
+unzip './.fonts/*.zip' -d ~/.fonts/
+rm -rf ./.fonts/*.zip
 
 
 # helpers

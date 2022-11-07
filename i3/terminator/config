@@ -1,0 +1,34 @@
+[global_config]
+  focus = mouse
+  borderless = True
+  tab_position = hidden
+  title_hide_sizetext = True
+  always_split_with_profile = True
+[keybindings]
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_color = "#1a1b26"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#eceff4"
+    cursor_color_fg = False
+    font = JetBrains Mono Semi-Bold 10
+    foreground_color = "#a9b1d6"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    palette = "#32344a:#f7768e:#9ece6a:#e0af68:#7aa2f7:#ad8ee6:#449dab:#787c99:#444b6a:#ff7a93:#b9f27c:#ff9e64:#7da6ff:#bb9af7:#0db9d7:#acb0d0"
+    login_shell = True
+    use_system_font = False
+    bold_is_bright = True
+    copy_on_selection = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

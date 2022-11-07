@@ -13,11 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono 1
+font pango:JetBrains Mono 0
 
 # Elimining borders
-# for_window [class="^.*"] border pixel 0
-default_border pixel 1
+for_window [class="^.*"] border pixel 0
+default_border pixel 0
 for_window [class="x-terminal-emulator"] border pixel 0
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -129,15 +129,15 @@ set $ws9  "9"
 set $ws10 "10"
 
 # Outputs of workspaces
-workspace $ws1  output eDP-1
-workspace $ws2  output eDP-1
+workspace $ws1  output HDMI-1
+workspace $ws2  output HDMI-1
 workspace $ws3  output eDP-1
 workspace $ws4  output eDP-1
-workspace $ws5  output eDP-1
-workspace $ws6  output eDP-1
-workspace $ws7  output eDP-1
-workspace $ws8  output eDP-1
-workspace $ws9  output eDP-1
+workspace $ws5  output HDMI-1
+workspace $ws6  output HDMI-1
+workspace $ws7  output HDMI-1
+workspace $ws8  output HDMI-1
+workspace $ws9  output HDMI-1
 workspace $ws10 output HDMI-1
 
 # switch to workspace
@@ -179,7 +179,7 @@ bindsym $mod+Mod1+Right resize grow   width  7 px or 7 ppt
 
 
 # for_window
-for_window [class="Spotify"] move container to workspace $ws2
+# for_window [class="Spotify"] move container to workspace $ws2
 
 # Lock wallpaper 
 set $i3lockwall i3lock -i /home/cangerana/Pictures/background/alex-knight-5-GNa303REg-unsplash.png -t
@@ -190,17 +190,11 @@ for_window [window_role="task_dialog"] floating enable
 
 # Descktop wallpaper
 
-exec_always feh --bg-fill /home/cangerana/Pictures/background/exec_always feh --bg-fill /home/cangerana/Pictures/background/chuva.jpg
-# exec_always feh --bg-fill /home/cangerana/Pictures/background/exec_always feh --bg-fill /home/cangerana/Pictures/background/2021_10_05_059_Kleki.png
-# exec_always feh --bg-fill /home/cangerana/Pictures/background/eberhard-grossgasteiger-iCGwyT3rMcs-unsplash.jpg
-# exec_always feh --bg-fill /home/cangerana/Pictures/background/andre-benz-qJfznuTMAYA-unsplash.jpg
-# exec_always feh --bg-fill /home/cangerana/Pictures/background/alex-knight-5-GNa303REg-unsplash.jpg
-# exec_always feh --bg-fill /home/cangerana/Pictures/background/mos-sukjaroenkraisri-u4Y2tLJtxa4-unsplash.jpg
-# exec_always feh --bg-fill /home/cangerana/Pictures/background/masahiro-miyagi-QiDAjQ8nZFc-unsplash.jpg
+# exec_always feh --bg-fill /home/cangerana/Pictures/background/exec_always feh --bg-fill /home/cangerana/Pictures/background/chuva.jpg
 
 # Load de settings os monitor
-exec_always /home/cangerana/.screenlayout/layout_monitor.sh
-bindsym $mod+v exec /home/cangerana/.screenlayout/one_monitor.sh
+exec_always ~/.screenlayout/monitor.sh
+bindsym $mod+v exec ~/.screenlayout/one_monitor.sh
 
 # Start with numlock
 exec_always numlockx
@@ -244,10 +238,9 @@ set $mode_app System (f) Firefox | (l) Luakit | (e) Nautilus | (s) Spotify | (d)
 
 mode "$mode_app" {
     bindsym f exec notify-send 'Starting Firefox'     ; exec firefox                            , mode "default"
-    bindsym l exec notify-send 'Starting LuaKit'      ; exec luakit                             , mode "default"
     bindsym e exec notify-send 'Starting Nautilus'    ; exec nautilus                           , mode "default"
-    bindsym s exec notify-send 'Starting Spotify'     ; exec spotify				, mode "default"
-    bindsym d exec notify-send 'Starting Discord'     ; exec discord				, mode "default"
+    bindsym s exec notify-send 'Starting Spotify'     ; exec flatpak run com.spotify.Client	, mode "default"
+    bindsym d exec notify-send 'Starting Discord'     ; exec flatpak run com.discordapp.Discord , mode "default"
     bindsym a exec notify-send 'Starting Pavucontrol' ; exec pavucontrol-qt                     , mode "default"
 
     # back to normal: Enter or Escape
@@ -260,39 +253,53 @@ bindsym $mod+n mode "$mode_app"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-# class                 border  bground text    indicator child_border
-client.focused          #b7b7b7 #b7b7b7 #FFFFFF #b7b7b7   #b7b7b7
-client.focused_inactive #323232 #323232 #7f7f7f #323232   #323232
-client.unfocused        #262626 #262626 #7f7f7f #262626   #262626
-client.urgent           #323232 #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+#colors
 
-client.background       #F8F8F2
+# class                         border          background      text            indicator       child_border
+client.focused                  #cd7ebf         #cd7ebf         #d8dee9         #cd7ebf         #cd7ebf
+client.focused_inactive         #cd7ebf         #cd7ebf         #d8dee9         #cd7ebf         #cd7ebf
+client.unfocused                #2a3344         #2a3344         #d8dee9         #2a3344         #2a3344
+client.urgent                   #2a3344         #2a3344         #d8dee9         #2a3344         #2a3344
+client.placeholder              #2a3344         #2a3344         #d8dee9         #2a3344         #2a3344
 
 # flip the bar visibility 
 bindsym $mod+m bar mode toggle
 
-bar {
-    output primary
-    output eDP-1
-    output_format = "i3bar"
-    status_command i3status
-    font JetBrains Mono Bold
-    position top
-    colors {
-    
-        background #282A36
-        statusline #F8F8F2
-        separator  #44475A
-
-        focused_workspace  #44475A #44475A #7f7f7f
-        active_workspace   #282A36 #44475A #F8F8F2
-        inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-        binding_mode       #FF5555 #FF5555 #F8F8F2
-  }
-}
+#bar {
+#    output primary
+#    output eDP-1
+#    output_format = "i3bar"
+#    status_command i3status
+#    font JetBrains Mono Bold
+#    position top
+#    colors {
+#    
+#        background #282A36
+#        statusline #F8F8F2
+#        separator  #44475A
+#
+#        focused_workspace  #44475A #44475A #7f7f7f
+#        active_workspace   #282A36 #44475A #F8F8F2
+#        inactive_workspace #282A36 #282A36 #BFBFBF
+#        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+#        binding_mode       #FF5555 #FF5555 #F8F8F2
+#  }
+#}
 
 # bindsym $mod+Return exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
+
+# rofi menu keybinding
 bindsym $mod+Return exec rofi -show drun -kb-cancel
+
+# polybar launch
+set $polybarlaunch $HOME/.config/polybar/launch.sh mybar
+
+# initialize
+exec_always --no-startup-id $polybarlaunch
+
+# initializer nitrogen
+exec_always --no-startup-id nitrogen --restore
+
+# initializer picon
+exec_always --no-startup-id picom -b
 
