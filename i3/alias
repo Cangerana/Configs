@@ -1,4 +1,3 @@
-
 # Alias
 
 alias update='sudo apt update && sudo apt upgrade && sudo apt clean && sudo apt autoclean && sudo apt autoremove'
@@ -18,3 +17,8 @@ alias vpn='cd ~/projects/siedos/ && sudo openvpn fresnel.ovpn'
 alias esocial='cd ~/projects/engines/esocial'
 alias srh='cd ~/projects/tcdf/srh'
 alias n='nvim'
+alias dp='sudo docker ps'
+alias dub='sudo docker compose up --build'
+alias du='sudo docker compose up'
+alias dd='sudo docker compose down'
+
