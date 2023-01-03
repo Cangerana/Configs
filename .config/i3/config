@@ -291,6 +291,8 @@ bindsym $mod+m bar mode toggle
 # rofi menu keybinding
 bindsym $mod+Return exec rofi -show drun -kb-cancel
 
+bindsym $mod+Ctrl+p exec flameshot gui
+
 # polybar launch
 set $polybarlaunch $HOME/.config/polybar/launch.sh mybar
 
