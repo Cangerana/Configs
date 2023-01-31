@@ -1,4 +1,2 @@
-require("can.remap")
-require("can.set")
-
+require("can")
 
