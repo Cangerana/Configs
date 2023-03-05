@@ -1,0 +1,6 @@
+[submodule "background/external/anime"]
+	path = background/external/anime
+	url = https://github.com/ThePrimeagen/anime.git
+[submodule "background/external/wallpapers"]
+	path = background/external/wallpapers
+	url = https://github.com/Styleads/wallpapers.git
