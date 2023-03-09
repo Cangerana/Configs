@@ -24,3 +24,4 @@ vim.keymap.set("v", "<leader>(", "<ESC>`<i(<ESC>`>la)<ESC>`<v`>ll")
 vim.keymap.set("v", "<leader>{", "<ESC>`<i{<ESC>`>la}<ESC>`<v`>ll")
 vim.keymap.set("v", "<leader>[", "<ESC>`<i[<ESC>`>la]<ESC>`<v`>ll")
 
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
