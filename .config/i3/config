@@ -36,14 +36,15 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh volume_up
+bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh volume_down
+bindsym XF86AudioMute exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh volume_mute
 
 # Control brightness
-bindsym XF86MonBrightnessUp   exec brightnessctl set +8%
-bindsym XF86MonBrightnessDown exec brightnessctl set 8%-
+# bindsym XF86MonBrightnessUp   exec brightnessctl set +8%
+# bindsym XF86MonBrightnessDown exec brightnessctl set 8%-
+bindsym XF86MonBrightnessUp exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh brightness_up
+bindsym XF86MonBrightnessDown exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh brightness_down
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -127,18 +128,22 @@ set $ws7  "7"
 set $ws8  "8"
 set $ws9  "9"
 set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12"
 
 # Outputs of workspaces
 workspace $ws1  output HDMI-1
 workspace $ws2  output HDMI-1
-workspace $ws3  output eDP-1
-workspace $ws4  output eDP-1
+workspace $ws3  output HDMI-1
+workspace $ws4  output HDMI-1
 workspace $ws5  output HDMI-1
 workspace $ws6  output HDMI-1
 workspace $ws7  output HDMI-1
 workspace $ws8  output HDMI-1
 workspace $ws9  output HDMI-1
 workspace $ws10 output HDMI-1
+workspace $ws11  output eDP-1
+workspace $ws12  output eDP-1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -151,6 +156,8 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+x workspace number $ws11
+bindsym $mod+d workspace number $ws12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -163,6 +170,8 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+x move container to workspace number $ws11
+bindsym $mod+Shift+d move container to workspace number $ws12
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -231,7 +240,7 @@ mode "$mode_system" {
 bindsym $mod+BackSpace mode "$mode_system"
 bindsym $mod+comma exec terminator -e "bash ~/.config/i3/scripts/vpn"
 
-bindsym $mod+e exec terminator -e "ranger" 
+bindsym $mod+e exec alacritty -e "ranger" 
 
 # Mode for open comum apps
 set $mode_app System (f) Firefox | (l) Luakit | (e) Nautilus | (s) Spotify | (d) Discord | (a) Pavucontrol
