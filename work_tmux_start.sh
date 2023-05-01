@@ -28,7 +28,7 @@ tmux send-keys -t dev 'cd $HOME/projects/' C-m
 
 tmux new-window -t dev
 tmux rename-window -t dev Service
-tmux send-keys -t dev 'cd $HOME/siedos/projects/' C-m
+tmux send-keys -t dev 'cd $HOME/projects/' C-m
 tmux split-window -h -t dev
 tmux split-window -h -t dev
 tmux select-layout main-vertical
