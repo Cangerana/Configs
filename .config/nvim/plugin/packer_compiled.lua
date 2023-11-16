@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/can/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/can/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/can/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/can/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/can/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/siedos/.cache/nvim/packer_hererocks/2.1.1694940244/share/lua/5.1/?.lua;/home/siedos/.cache/nvim/packer_hererocks/2.1.1694940244/share/lua/5.1/?/init.lua;/home/siedos/.cache/nvim/packer_hererocks/2.1.1694940244/lib/luarocks/rocks-5.1/?.lua;/home/siedos/.cache/nvim/packer_hererocks/2.1.1694940244/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/siedos/.cache/nvim/packer_hererocks/2.1.1694940244/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,36 +74,113 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
+  ["beacon.nvim"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/beacon.nvim",
+    url = "https://github.com/rainbowhxch/beacon.nvim"
+  },
+  ["blue-moon"] = {
+    config = { "\27LJ\2\n[\0\0\3\0\5\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\3\0'\2\4\0B\0\2\1K\0\1\0\26colorscheme blue-moon\bcmd\18termguicolors\bopt\bvim\0" },
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/blue-moon",
+    url = "https://github.com/kyazdani42/blue-moon"
+  },
+  catppuccin = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
+  ["coc.nvim"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
+  },
+  ["dracula.nvim"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/dracula.nvim",
+    url = "https://github.com/Mofiqul/dracula.nvim"
+  },
+  ["github-colors"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/github-colors",
+    url = "https://github.com/lourenci/github-colors"
+  },
+  harpoon = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  nomodoro = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/nomodoro",
+    url = "https://github.com/dbinagi/nomodoro"
+  },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/nord.nvim",
+    url = "https://github.com/shaunsingh/nord.nvim"
+  },
+  ["nvim-comment"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/nvim-comment",
+    url = "https://github.com/terrortylor/nvim-comment"
+  },
+  ["nvim-surround"] = {
+    config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0" },
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/can/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/can/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  playground = {
-    loaded = true,
-    path = "/home/can/.local/share/nvim/site/pack/packer/start/playground",
-    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/can/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["rose-pine"] = {
     config = { "\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0" },
     loaded = true,
-    path = "/home/can/.local/share/nvim/site/pack/packer/start/rose-pine",
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/rose-pine",
     url = "https://github.com/rose-pine/neovim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/can/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-rails"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/vim-rails",
+    url = "https://github.com/tpope/vim-rails"
+  },
+  ["vim-wakatime"] = {
+    loaded = true,
+    path = "/home/siedos/.local/share/nvim/site/pack/packer/start/vim-wakatime",
+    url = "https://github.com/wakatime/vim-wakatime"
   }
 }
 
@@ -112,6 +189,14 @@ time([[Defining packer_plugins]], false)
 time([[Config for rose-pine]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
 time([[Config for rose-pine]], false)
+-- Config for: nvim-surround
+time([[Config for nvim-surround]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
+time([[Config for nvim-surround]], false)
+-- Config for: blue-moon
+time([[Config for blue-moon]], true)
+try_loadstring("\27LJ\2\n[\0\0\3\0\5\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\3\0'\2\4\0B\0\2\1K\0\1\0\26colorscheme blue-moon\bcmd\18termguicolors\bopt\bvim\0", "config", "blue-moon")
+time([[Config for blue-moon]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

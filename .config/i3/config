@@ -36,15 +36,14 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh volume_up
-bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh volume_down
-bindsym XF86AudioMute exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh volume_mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Control brightness
-# bindsym XF86MonBrightnessUp   exec brightnessctl set +8%
-# bindsym XF86MonBrightnessDown exec brightnessctl set 8%-
-bindsym XF86MonBrightnessUp exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh brightness_up
-bindsym XF86MonBrightnessDown exec --no-startup-id $HOME/projects/scripts/volume_brightness.sh brightness_down
+bindsym XF86MonBrightnessUp   exec brightnessctl set +8%
+bindsym XF86MonBrightnessDown exec brightnessctl set 8%-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -142,8 +141,8 @@ workspace $ws7  output HDMI-1
 workspace $ws8  output HDMI-1
 workspace $ws9  output HDMI-1
 workspace $ws10 output HDMI-1
-workspace $ws11  output eDP-1
-workspace $ws12  output eDP-1
+workspace $ws11 output eDP-1
+workspace $ws12 output eDP-1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -181,10 +180,10 @@ bindsym $mod+Shift+r restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Window resizing
-bindsym $mod+Mod1+Left  resize shrink width  7 px or 7 ppt
-bindsym $mod+Mod1+Down  resize grow   height 7 px or 7 ppt
-bindsym $mod+Mod1+Up    resize shrink height 7 px or 7 ppt
-bindsym $mod+Mod1+Right resize grow   width  7 px or 7 ppt
+bindsym $mod+Mod1+h  resize shrink width  7 px or 7 ppt
+bindsym $mod+Mod1+j  resize grow   height 7 px or 7 ppt
+bindsym $mod+Mod1+k    resize shrink height 7 px or 7 ppt
+bindsym $mod+Mod1+l resize grow   width  7 px or 7 ppt
 
 
 # for_window
@@ -238,9 +237,26 @@ mode "$mode_system" {
 }
 
 bindsym $mod+BackSpace mode "$mode_system"
-bindsym $mod+comma exec terminator -e "bash ~/.config/i3/scripts/vpn"
 
-bindsym $mod+e exec alacritty -e "ranger" 
+mode "$mode_scratchpad" {
+    bindsym s [class="Spotify"] scratchpad show; move position center, mode "default"
+    bindsym a [class="pavucontrol-qt"] scratchpad show; move position center, mode "default"
+    bindsym e [title="ranger"] scratchpad show; move position center, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+o mode "$mode_scratchpad"
+
+#bindsym $mod+s move scratchpad
+#for_window [class="Spotify"], move scratchpad
+for_window [class="pavucontrol-qt"], move scratchpad
+for_window [title="ranger"], move scratchpad
+
+
+bindsym $mod+e exec terminator -e "ranger" --title="ranger"
 
 # Mode for open comum apps
 set $mode_app System (f) Firefox | (l) Luakit | (e) Nautilus | (s) Spotify | (d) Discord | (a) Pavucontrol
@@ -248,9 +264,10 @@ set $mode_app System (f) Firefox | (l) Luakit | (e) Nautilus | (s) Spotify | (d)
 mode "$mode_app" {
     bindsym f exec notify-send 'Starting Firefox'     ; exec firefox                            , mode "default"
     bindsym e exec notify-send 'Starting Nautilus'    ; exec nautilus                           , mode "default"
-    bindsym s exec notify-send 'Starting Spotify'     ; exec flatpak run com.spotify.Client	, mode "default"
+    bindsym s exec notify-send 'Starting Spotify'     ; exec flatpak run com.spotify.Client	    , mode "default"
     bindsym d exec notify-send 'Starting Discord'     ; exec flatpak run com.discordapp.Discord , mode "default"
     bindsym a exec notify-send 'Starting Pavucontrol' ; exec pavucontrol-qt                     , mode "default"
+    bindsym c exec notify-send 'Starting Emacs'       ; exec emacsclient -c -a 'emacs'          , mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -301,6 +318,9 @@ bindsym $mod+m bar mode toggle
 bindsym $mod+Return exec rofi -show drun -kb-cancel
 
 bindsym $mod+Ctrl+p exec flameshot gui
+
+bindsym $mod+Alt+y exec ./$HOME/projetos/scripts/copy_selection.sh
+
 
 # polybar launch
 set $polybarlaunch $HOME/.config/polybar/launch.sh mybar
