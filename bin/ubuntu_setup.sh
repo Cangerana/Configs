@@ -72,7 +72,7 @@ echo "Starting Setup ==> Flatpak Apps"
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 silent_exec $FLATPAK_INSTALL com.discordapp.Discord -y
-#silent_exec $FLATPAK_INSTALL com.spotify.Client -y
+silent_exec $FLATPAK_INSTALL com.spotify.Client -y
 #silent_exec $FLATPAK_INSTALL org.gnome.gitlab.somas.Apostrophe -y
 #silent_exec $FLATPAK_INSTALL com.jetbrains.RubyMine -y
 
@@ -99,6 +99,7 @@ rm -f packages.microsoft.gpg
 #sudo apt update -y && sudo apt upgrade -y && sudo apt clean -y && sudo apt autoclean -y && sudo apt autoremove -y
 #silent_exec $APT_INSTALL dbeaver-ce
 
+llllllllllll
 echo "Setting I3 configs"
 
 mkdir ~/.config/i3/

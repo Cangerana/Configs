@@ -30,6 +30,8 @@ for_window [class="x-terminal-emulator"] border pixel 0
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+exec "setxkbmap -variant thinkpad -model abnt2 -option 'grp:alt_space_toggle,lv3:switch,compose:ralt' -layout us,br"
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -50,7 +52,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+t exec alacritty
+bindsym $mod+t exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -90,6 +92,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# move workspace to other monitor
+bindsym $mod+Ctrl+greater move workspace to output next
 
 # change orientation
 bindsym $mod+semicolon split toggle
@@ -201,8 +206,8 @@ for_window [window_role="task_dialog"] floating enable
 # exec_always feh --bg-fill /home/cangerana/Pictures/background/exec_always feh --bg-fill /home/cangerana/Pictures/background/chuva.jpg
 
 # Load de settings os monitor
-exec_always ~/.screenlayout/monitor.sh
 bindsym $mod+v exec ~/.screenlayout/one_monitor.sh
+exec_always ~/.screenlayout/monitors.sh
 
 # Start with numlock
 exec_always numlockx
@@ -281,36 +286,64 @@ bindsym $mod+n mode "$mode_app"
 
 #colors
 
-# class                         border          background      text            indicator       child_border
-client.focused                  #cd7ebf         #cd7ebf         #d8dee9         #cd7ebf         #cd7ebf
-client.focused_inactive         #cd7ebf         #cd7ebf         #d8dee9         #cd7ebf         #cd7ebf
-client.unfocused                #2a3344         #2a3344         #d8dee9         #2a3344         #2a3344
-client.urgent                   #2a3344         #2a3344         #d8dee9         #2a3344         #2a3344
-client.placeholder              #2a3344         #2a3344         #d8dee9         #2a3344         #2a3344
+set $rosewater #f5e0dc
+set $flamingo #f2cdcd
+set $pink #f5c2e7
+set $mauve #cba6f7
+set $red #f38ba8
+set $maroon #eba0ac
+set $peach #fab387
+set $yellow #f9e2af
+set $green #a6e3a1
+set $teal #94e2d5
+set $sky #89dceb
+set $sapphire #74c7ec
+set $blue #89b4fa
+set $lavender #b4befe
+set $text #cdd6f4
+set $subtext1 #bac2de
+set $subtext0 #a6adc8
+set $overlay2 #9399b2
+set $overlay1 #7f849c
+set $overlay0 #6c7086
+set $surface2 #585b70
+set $surface1 #45475a
+set $surface0 #313244
+set $base #1e1e2e
+set $mantle #181825
+set $crust #11111b
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
 # flip the bar visibility 
 bindsym $mod+m bar mode toggle
 
-#bar {
-#    output primary
-#    output eDP-1
-#    output_format = "i3bar"
-#    status_command i3status
-#    font JetBrains Mono Bold
-#    position top
-#    colors {
-#    
-#        background #282A36
-#        statusline #F8F8F2
-#        separator  #44475A
-#
-#        focused_workspace  #44475A #44475A #7f7f7f
-#        active_workspace   #282A36 #44475A #F8F8F2
-#        inactive_workspace #282A36 #282A36 #BFBFBF
-#        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-#        binding_mode       #FF5555 #FF5555 #F8F8F2
-#  }
-#}
+bar {
+    output HDMI-1
+    output eDP-1
+    output_format = "i3bar"
+    status_command i3status
+    font Ubuntu Mono Bold
+    position bottom
+    workspace_min_width 40
+    colors {
+      background         $base
+      statusline         $text
+      focused_statusline $text
+      focused_separator  $base
+      focused_workspace  $base $base $green
+      active_workspace   $base $base $blue
+      inactive_workspace $base $base $surface1
+      urgent_workspace   $base $base $surface1
+      binding_mode       $base $base $surface1
+    }
+}
 
 # bindsym $mod+Return exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
 
@@ -319,18 +352,21 @@ bindsym $mod+Return exec rofi -show drun -kb-cancel
 
 bindsym $mod+Ctrl+p exec flameshot gui
 
-bindsym $mod+Alt+y exec ./$HOME/projetos/scripts/copy_selection.sh
+# bindsym $mod+Alt+y exec ./$HOME/projetos/scripts/copy_selection.sh
 
 
 # polybar launch
-set $polybarlaunch $HOME/.config/polybar/launch.sh mybar
+# set $polybarlaunch $HOME/.config/polybar/launch.sh mybar
 
 # initialize
-exec_always --no-startup-id $polybarlaunch
+# exec_always --no-startup-id $polybarlaunch
 
 # initializer nitrogen
 exec_always --no-startup-id nitrogen --restore
 
 # initializer picon
 exec_always --no-startup-id picom -b
+
+# authentication
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 

@@ -1,56 +1,53 @@
- -- require('rose-pine').setup({
- --     --- @usage 'auto'|'main'|'moon'|'dawn'
- --     variant = 'auto',
- --     --- @usage 'main'|'moon'|'dawn'
- --     dark_variant = 'main',
- --     bold_vert_split = false,
- --     dim_nc_background = false,
- --     disable_background = true,
- --     disable_float_background = true,
- --     disable_italics = false,
- -- 
- --     --- @usage string hex value or named color from rosepinetheme.com/palette
- --     groups = {
- --         background = 'base',
- --         background_nc = '_experimental_nc',
- --         panel = 'surface',
- --         panel_nc = 'base',
- --         border = 'highlight_med',
- --         comment = 'muted',
- --         link = 'iris',
- --         punctuation = 'subtle',
- -- 
- --         error = 'love',
- --         hint = 'iris',
- --         info = 'foam',
- --         warn = 'gold',
- -- 
- --         headings = {
- --             h1 = 'iris',
- --             h2 = 'foam',
- --             h3 = 'rose',
- --             h4 = 'gold',
- --             h5 = 'pine',
- --             h6 = 'foam',
- --         }
- --         -- or set all headings at once
- --         -- headings = 'subtle'
- --     },
- -- 
- --     -- Change specific vim highlight groups
- --     -- https://github.com/rose-pine/neovim/wiki/Recipes
- --     highlight_groups = {
- --         ColorColumn = { bg = 'highlight_high' },
- -- 
- --         -- Blend colours against the "base" background
- --         CursorLine = { bg = 'base', blend = 10 },
- --         StatusLine = { fg = 'pine', bg = 'love', blend = 10 },
- --     }
- -- })
- -- 
- -- -- Set colorscheme after options
- -- vim.cmd('colorscheme rose-pine')
-
+ require('rose-pine').setup({
+     --- @usage 'auto'|'main'|'moon'|'dawn'
+     variant = 'auto',
+     --- @usage 'main'|'moon'|'dawn'
+     dark_variant = 'main',
+     bold_vert_split = false,
+     dim_nc_background = false,
+     disable_background = true,
+     disable_float_background = true,
+     disable_italics = false,
+ 
+     --- @usage string hex value or named color from rosepinetheme.com/palette
+     groups = {
+         background = 'base',
+         background_nc = '_experimental_nc',
+         panel = 'surface',
+         panel_nc = 'base',
+         border = 'highlight_med',
+         comment = 'muted',
+         link = 'iris',
+         punctuation = 'subtle',
+ 
+         error = 'love',
+         hint = 'iris',
+         info = 'foam',
+         warn = 'gold',
+ 
+         headings = {
+             h1 = 'iris',
+             h2 = 'foam',
+             h3 = 'rose',
+             h4 = 'gold',
+             h5 = 'pine',
+             h6 = 'foam',
+         }
+         -- or set all headings at once
+         -- headings = 'subtle'
+     },
+ 
+     -- Change specific vim highlight groups
+     -- https://github.com/rose-pine/neovim/wiki/Recipes
+     highlight_groups = {
+         ColorColumn = { bg = 'highlight_high' },
+ 
+         -- Blend colours against the "base" background
+         CursorLine = { bg = 'base', blend = 10 },
+         StatusLine = { fg = 'pine', bg = 'love', blend = 10 },
+     }
+ })
+ 
 require("tokyonight").setup({
   -- your configuration comes here
   -- or leave it empty to use the default settings
@@ -97,14 +94,14 @@ vim.g.nord_contrast = true
 -- vim.cmd('colorscheme nord')
 
 require("catppuccin").setup({
-    flavour = "macchiato", -- latte, frappe, macchiato, mocha
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
     background = { -- :h background
         light = "latte",
         dark = "mocha",
     },
     transparent_background = true, -- disables setting the background color.
     show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
+    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
     dim_inactive = {
         enabled = false, -- dims the background color of inactive window
         shade = "dark",
@@ -140,6 +137,8 @@ require("catppuccin").setup({
     },
 })
 
--- setup must be called before loading
+-- Set colorscheme after options
+-- vim.cmd('colorscheme rose-pine')
+
 vim.cmd.colorscheme "catppuccin"
 

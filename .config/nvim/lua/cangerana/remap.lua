@@ -76,3 +76,5 @@ vim.keymap.set("n", "<leader>te", "i<% %><left><ESC>")
 vim.keymap.set("n", "<leader>te", "i<%= %><left><ESC>")
 vim.keymap.set("n", "<leader>tb", "obyebug<ESC>==")
 
+vim.keymap.set("n", "<leader>v", "<cmd>set clipboard=unnamedplus<CR>")
+vim.keymap.set("n", "<leader>V", "<cmd>set clipboard=<CR>")

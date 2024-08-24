@@ -1,18 +1,23 @@
+# Config 
 
-# Alias
+export EDITOR='nvim'
+export VISUAL='nvim'
 
-alias update='sudo apt update && sudo apt upgrade && sudo apt clean && sudo apt autoclean && sudo apt autoremove'
-alias py='python3'
-alias bpy='bpython'
-alias cd..='cd ..'
-alias download='sudo apt install'
-alias search='sudo apt search'
-alias dock='sudo docker'
-alias ifg='cd ~/projects/ifg_produz && . env/bin/activate'
-alias delete='rm -rf'
-alias re='reset'
-alias cdl='_(){ cd $1; ll; };_'
-alias fh='free -h'
-alias giup='git status && git checkout master && git pull'
-alias n='nvim'
+xset r rate 295 55
+
+setxkbmap -variant thinkpad -model abnt2 -option 'grp:alt_space_toggle,lv3:switch,compose:ralt' -layout us,br
+
+PS1=' \[\e[0;38;5;63m\]\w \[\e[0;1;38;5;63m\]>\[\e[0;1;38;5;63m\]> \[\e[0m\]'
+PROMPT_DIRTRIM=2
+TERM=tmux
+
+NOTES_FILES=~/projects/settings/configs
+
+# FZF stuffs
+. ~/projetos/scripts/tt.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_COMPLETION_TRIGGER='**'
+
+. ~/projetos/scripts/aliases
 
