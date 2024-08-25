@@ -8,6 +8,20 @@ return require('packer').startup(function(use)
 
   use { "L3MON4D3/LuaSnip", run = "make install_jsregexp" }
 
+  -- completion
+
+  use { "saadparwaiz1/cmp_luasnip" }
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'hrsh7th/cmp-cmdline' }
+  use { 'hrsh7th/nvim-cmp' }
+
+
+  -- lsp
+
+  use { 'neovim/nvim-lspconfig' }
+
   -- theme
 
   use 'Mofiqul/dracula.nvim'
@@ -27,6 +41,15 @@ return require('packer').startup(function(use)
   use 'shaunsingh/nord.nvim'
 
   use { "catppuccin/nvim", as = "catppuccin" }
+
+  use({
+    "epwalsh/obsidian.nvim",
+    tag = "*",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp"
+    }
+  })
 
   use({
     'rose-pine/neovim',
@@ -51,7 +74,7 @@ return require('packer').startup(function(use)
 
   use('tpope/vim-fugitive')
 
-  use 'neoclide/coc.nvim' -- Liver Server
+  -- use 'neoclide/coc.nvim' -- Liver Server
 
   use ('ThePrimeagen/harpoon')
 

@@ -227,7 +227,7 @@ bindsym $mod+Ctrl+Left workspace next
 bindsym $mod+ccedilla exec terminator -e "cat ~/.config/i3/config | grep bindsym | less"
 
 # Open Configs
-bindsym $mod+i exec code ~/.config/i3/config
+# bindsym $mod+i exec code ~/.config/i3/config
 
 # shutdown / restart / suspend...
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (CTRL+s) shutdown
@@ -257,7 +257,7 @@ mode "$mode_scratchpad" {
     bindsym Escape mode "default"
 }
 
-# bindsym $mod+o mode "$mode_scratchpad"
+bindsym $mod+i mode "$mode_scratchpad"
 
 # bindsym $mod+s move scratchpad
 # for_window [class="Spotify"], move scratchpad
@@ -373,3 +373,4 @@ exec_always --no-startup-id picom -b
 # authentication
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
+exec --no-startup-id xset s off

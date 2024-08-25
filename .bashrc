@@ -19,3 +19,17 @@ export FZF_COMPLETION_TRIGGER='**'
 
 . ~/projetos/scripts/aliases
 
+# SSH Agent should be running, once
+runcount=$(ps -ef | grep "ssh-agent" | grep -v "grep" | wc -l)
+
+if [ $runcount -eq 0 ]; then
+    echo Starting SSH Agent
+    eval $(ssh-agent -s)
+fi
+
+ssh-add -l &>/dev/null
+if ! [ "$?" == 0 ]; then
+     echo Adding keys...
+     ssh-add $PATH_SSH_KEY
+fi
+
