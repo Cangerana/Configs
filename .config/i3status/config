@@ -7,22 +7,23 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
+	output_format = "i3bar"
         colors = true
         interval = 15
 }
 
-# order += "ethernet _first_"
 # order += "ipv6"
 # order += "disk /"
 # order += "cpu_temperature 0"
+# order += "battery all"
 
 order += "tztime local"
 order += "memory"
 order += "load"
 order += "cpu_usage"
-order += "battery all"
 order += "volume master"
 order += "wireless _first_"
+order += "ethernet _first_"
 
 wireless _first_ {
         # format_up = "W: (%quality at %essid) %ip"
@@ -66,7 +67,7 @@ memory {
 
 tztime local {
         format = "%H:%M - %d %b %Y"
-        min_width = 320
+        min_width = 573
         align = left
         separator = false
 }
@@ -74,5 +75,5 @@ tztime local {
 volume master {
         format = "Vol: %volume"
         format_muted = "Vol muted (%volume)"
-        device = "pulse:1"
+        device = "pulse"
 }

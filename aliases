@@ -43,8 +43,10 @@ alias gcm='git commit -m'
 alias glo='git log --oneline'
 alias vim="nvim"
 alias ..="cd .."
-alias dp='sudo docker ps'
-alias dub='sudo docker compose up --build'
-alias du='sudo docker compose up'
-alias dd='sudo docker compose down'
-
+alias dp='docker ps'
+alias dub='docker compose up --build'
+alias du='docker compose up'
+alias dd='docker compose down'
+alias nc='cd ~/.config/nvim && n'
+alias delete_containers='docker rm -vf $(docker ps -aq)'
+alias delete_images='docker rmi -f $(docker images -aq)'
