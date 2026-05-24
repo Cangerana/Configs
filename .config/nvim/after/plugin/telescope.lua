@@ -3,11 +3,13 @@ local builtin = require('telescope.builtin')
 
 telescope.setup({
   defaults = {
+    preview = {
+      treesitter = false,
+    },
     file_ignore_patterns = { 
       "node_modules",
       ".git",
       "vendor",
-      "spec",
       "tags",
       "rgloader",
       "home",

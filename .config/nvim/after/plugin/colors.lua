@@ -94,7 +94,7 @@ vim.g.nord_contrast = true
 -- vim.cmd('colorscheme nord')
 
 require("catppuccin").setup({
-    flavour = "frappe", -- latte, frappe, macchiato, mocha
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
     background = { -- :h background
         light = "latte",
         dark = "mocha",
@@ -133,6 +133,10 @@ require("catppuccin").setup({
         treesitter = true,
         notify = false,
         mini = false,
+        harpoon = true,
+        telescope = {
+            enabled = true,
+        }
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })

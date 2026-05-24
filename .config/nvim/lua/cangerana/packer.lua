@@ -20,7 +20,9 @@ return require('packer').startup(function(use)
 
   -- lsp
 
-  use { 'neovim/nvim-lspconfig' }
+  vim.pack.add{
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
+  }
 
   -- theme
 
@@ -42,14 +44,14 @@ return require('packer').startup(function(use)
 
   use { "catppuccin/nvim", as = "catppuccin" }
 
-  use({
-    "epwalsh/obsidian.nvim",
-    tag = "*",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp"
-    }
-  })
+  -- use({
+  --   "epwalsh/obsidian.nvim",
+  --   tag = "*",
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "hrsh7th/nvim-cmp"
+  --   }
+  -- })
 
   use({
     'rose-pine/neovim',
