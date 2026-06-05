@@ -1,0 +1,19 @@
+#/bin/bash
+# Envrionments Variavles
+
+# Generall
+PS1=' \[\e[0;38;5;63m\]\w \[\e[0;1;38;5;63m\]>\[\e[0;1;38;5;63m\]> \[\e[0m\]'
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Go binaries
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+# Tmux scripts
+export NOTES_DIRECTORY="${HOME}/workspace/notes/"
+export PROJECTS_DIRECTORY="${HOME}/workspace/projects/"
+export KNOWLEDGE_DIRECTORY="${HOME}/workspace/knowledge/"
+export MAIN_PROJECT="${PROJECTS_DIRECTORY}/zenrunner_api/"
+export OBSIDIAN="${KNOWLEDGE_DIRECTORY}/PersonalNotes/"
+

@@ -1,38 +1,47 @@
+#/bin/bash
 # Alias
 
-alias ll='ls -alF'
-alias tmux="TERM=tmux tmux"
-alias update='sudo apt update && sudo apt upgrade && sudo apt clean && sudo apt autoclean && sudo apt autoremove'
-alias py='python3'
-alias bpy='bpython'
+###############################################################################
+##################################### BASH ####################################
+###############################################################################
+
 alias cd..='cd ..'
 alias ..='cd ..'
+alias cddow='cd ${HOME}/Downloads'
+alias cddoc='cd ${HOME}/Documents'
+alias ll='ls -alF'
+alias delete='rm -rf'
+alias cdl='_(){ cd $1; ll; };_'
+
+alias reset='exec $SHELL'
+
+alias hg='history | grep'
+
+alias fh='free -h'
+
+###############################################################################
+#################################### System ###################################
+###############################################################################
+
+alias update='sudo apt update && sudo apt upgrade && sudo apt clean && sudo apt autoclean && sudo apt autoremove'
 alias download='sudo apt install'
 alias search='sudo apt search'
-alias delete='rm -rf'
-alias re='reset'
-alias cdl='_(){ cd $1; ll; };_'
-alias fh='free -h'
+
+alias restart='sudo systemctl restart NetworkManager.service'
+
+###############################################################################
+#################################### CLI ###################################
+###############################################################################
+
+alias tmux="TERM=tmux tmux"
+alias t='tmux a -t .'
+alias tw='${HOME}/local/bin/work_tmux_start.sh'
+
+alias nc='cd ~/.config/nvim && n'
+alias vim="nvim"
 alias n='nvim'
 alias n.='nvim .'
-alias ran='ranger'
-alias tmn='tmux new -s'
-alias tma='tmux a -t'
-alias t='tmux a -t .'
-alias restart='exec $SHELL'
-alias hg='history | grep'
-alias tw='~/projetos/scripts/work_tmux_start.sh'
-alias bi='rm -rf Gemfile.lock && bundle install'
-alias bu='bundle update'
-alias rs='rails server webrick'
-alias rc='rails console'
-alias sf='redis-cli flushall && bundle exec sidekiq start'
-alias rk="cat tmp/pids/server.pid | xargs kill -9"
-alias projects='cd ~/projects'
-alias gat='git_authentication'
-alias cddow='cd ~/Downloads'
-alias cddoc='cd ~/Documents'
-alias giup='git fetch --all && git status && git checkout master && git pull'
+
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
@@ -40,14 +49,36 @@ alias gl='git log'
 alias gc='git checkout'
 alias gcm='git commit -m'
 alias glo='git log --oneline'
-alias vim="nvim"
-alias ..="cd .."
-alias dock='sudo docker'
-alias dp='docker ps'
-alias dub='docker compose up --build'
-alias du='docker compose up'
-alias dd='docker compose down'
-alias nc='cd ~/.config/nvim && n'
-alias delete_containers='docker rm -vf $(docker ps -aq)'
-alias delete_images='docker rmi -f $(docker images -aq)'
-alias snt='cd ~/projects/simple_notification'
+alias giupm='git checkout main && git fetch --all && git pull && git status'
+alias giupd='git checkout develop && git fetch --all && git pull && git status'
+alias gat='git_authentication'
+
+###############################################################################
+################################### Projects ##################################
+###############################################################################
+
+alias projects='cd ${PROJECTS_DIRECTORY}'
+alias snt='cd ${PROJECTS_DIRECTORY}/simple_notification'
+alias zenrunner='cd ${PROJECTS_DIRECTORY}/zenrunner_api'
+alias utility_belt='cd ${PROJECTS_DIRECTORY}/../tools/utility_belt'
+alias mainp='cd ${MAIN_PROJECT}'
+alias mainn='cd ${OBSIDIAN} && nvim'
+
+###############################################################################
+##################################### RoR #####################################
+###############################################################################
+
+alias bi='rm -rf Gemfile.lock && bundle install'
+alias bu='bundle update'
+alias rs='rails server webrick'
+alias rc='rails console'
+alias sf='redis-cli flushall && bundle exec sidekiq start'
+alias rk="cat tmp/pids/server.pid | xargs kill -9"
+
+###############################################################################
+#################################### Python ###################################
+###############################################################################
+
+alias py='python'
+alias bpy='bpython'
+
